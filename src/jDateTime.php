@@ -333,7 +333,7 @@ class jDateTime
     public static function date($format, $stamp = false, $timezone = null)
     {
         $stamp = ($stamp !== false) ? $stamp : time();
-        $dateTime = new \DateTime('@' . $stamp, static::safeCreateDateTimeZone($timezone));
+        $dateTime = new \DateTime('@' . $stamp, self::safeCreateDateTimeZone($timezone));
 
 
         //Find what to replace
@@ -780,15 +780,17 @@ class jDateTime
     /**
      * @param $format
      * @param $str
+     * @param DateTimeZone|string|null $timezone
      * @return \DateTime
      */
-    public static function createDatetimeFromFormat($format, $str)
+    public static function createDatetimeFromFormat($format, $str, $timezone = null)
     {
         $pd = self::parseFromFormat($format, $str);
         $gd = self::toGregorian($pd['year'], $pd['month'], $pd['day']);
         $date = new \DateTime();
         $date->setDate($gd[0], $gd[1], $gd[2]);
         $date->setTime($pd['hour'], $pd['minute'], $pd['second']);
+        $date->setTimezone(self::safeCreateDateTimeZone($timezone));
 
         return $date;
     }
@@ -796,11 +798,12 @@ class jDateTime
     /**
      * @param $format
      * @param $str
+     * @param DateTimeZone|string|null $tz
      * @return Carbon
      */
-    public static function createCarbonFromFormat($format, $str)
+    public static function createCarbonFromFormat($format, $str, $tz = null)
     {
-        return Carbon::createFromTimestamp(self::createDatetimeFromFormat($format, $str)->getTimestamp());
+        return Carbon::createFromTimestamp(self::createDatetimeFromFormat($format, $str)->getTimestamp(), $tz);
     }
 
     /**
