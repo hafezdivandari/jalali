@@ -333,7 +333,6 @@ class jDateTime
     public static function date($format, $stamp = false, $timezone = null)
     {
         $stamp = ($stamp !== false) ? $stamp : time();
-        $timezone = is_null($timezone) ? config('app.timezone') : $timezone;
         $dateTime = new \DateTime('@' . $stamp, static::safeCreateDateTimeZone($timezone));
 
 
