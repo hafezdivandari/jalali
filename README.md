@@ -1,5 +1,5 @@
-[![Build Status](https://travis-ci.org/morilog/jalali.svg?branch=master)](https://travis-ci.org/morilog/jalali)
-morilog/jalali
+[![Build Status](https://travis-ci.org/hafezdivandari/jalali.svg?branch=master)](https://travis-ci.org/hafezdivandari/jalali)
+hafezdivandari/jalali
 ======
 - This package compatible with Laravel `>=5` & `< 6.0`
 
