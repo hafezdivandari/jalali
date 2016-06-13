@@ -13,7 +13,7 @@ class jDateTest extends PHPUnit_Framework_TestCase
     public function test_it_must_foregable_and_must_work_fine()
     {
         $object = new jDate();
-        $jDate = $object->forge('2015-06-03')->format('Y-m-d', 'Asia/Tehran');
+        $jDate = $object->forge('2015-06-03')->format('Y-m-d', 'UTC');
 
         $this->assertNotNull($object->forge());
         $this->assertTrue('1394-03-13' === $jDate);
@@ -24,7 +24,7 @@ class jDateTest extends PHPUnit_Framework_TestCase
         $object = new jDate();
         $jDate = $object->forge('2015-06-03')
             ->reforge('+ 3 days')
-            ->format('Y-m-d', 'Asia/Tehran');
+            ->format('Y-m-d', 'UTC');
 
         $this->assertTrue('1394-03-16' === $jDate);
     }
@@ -40,7 +40,7 @@ class jDateTest extends PHPUnit_Framework_TestCase
     public function test_format_with_convert_to_persian()
     {
         $object = new jDate();
-        $jDate = $object->forge('2015-06-13')->format('Y-m-d', 'Asia/Tehran');
+        $jDate = $object->forge('2015-06-13')->format('Y-m-d', 'UTC');
 
         $this->assertTrue('۱۳۹۴-۰۳-۲۳' === \Morilog\Jalali\jDateTime::convertNumbers($jDate));
     }
