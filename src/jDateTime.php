@@ -770,7 +770,6 @@ class jDateTime
      */
     public static function createCarbonFromFormat($format, $str, $tz = null)
     {
-        if(is_null($tz)) $tz = config('app.timezone');
         return Carbon::createFromTimestamp(self::createDatetimeFromFormat($format, $str)->getTimestamp(), $tz);
     }
 
